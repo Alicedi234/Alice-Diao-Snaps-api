@@ -7,15 +7,10 @@ router.get("/:id", (req, res) => {
     //read jason file
     const photoDetailFile = fs.readFileSync("./data/photos.json");
     const photoDetails = JSON.parse(photoDetailFile);
-
-
     // get id
     const id = req.params.id;
-    console.log("Requested photoId:", id);
-
     // look for the photo
     const individualPhoto = photoDetails.find((photo) => photo.id === id);
-    console.log("Found photo:", individualPhoto);
 
     // if photo not found
     if (!individualPhoto) {

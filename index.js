@@ -1,9 +1,10 @@
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
-import photosRoutes from "./Routes/photos.js";
-import photoDetailsRoutes from "./Routes/photoDetails.js";
-import Tags from "./Routes/Tags.js";
+import PhotosRoutes from "./Routes/Photos.js";
+import PhotoDetailsRoutes from "./Routes/PhotoDetails.js";
+import TagsRoutes from "./Routes/Tags.js";
+import CommentsRoutes from "./Routes/Comments.js";
 
 //define the port
 const port = process.env.PORT ?? 5050;
@@ -23,11 +24,15 @@ app.get("/",(req,res) =>{
   res.send("hello");
 });
 
-app.use("/photos",photosRoutes);
+app.use("/photos",PhotosRoutes);
 
-app.use("/photos",photoDetailsRoutes);
+app.use("/photos",PhotoDetailsRoutes);
 
-app.use("/tags",Tags);
+app.use("/tags",TagsRoutes);
+
+app.use("/photos", CommentsRoutes);
+
+
 
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`);
