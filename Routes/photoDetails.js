@@ -6,10 +6,8 @@ router.get("/:id", (req, res) => {
   try {
     //read jason file
     const photoDetailFile = fs.readFileSync("./data/photos.json");
-    console.log("File content:", photoDetailFile); // 打印文件内容
-    
     const photoDetails = JSON.parse(photoDetailFile);
-    console.log("Parsed data:", photoDetails); // 打印解析后的数据
+
 
     // get id
     const id = req.params.id;
@@ -21,14 +19,13 @@ router.get("/:id", (req, res) => {
 
     // if photo not found
     if (!individualPhoto) {
-      console.log("Photo not found for ID:", photoId); 
+      console.log("Photo not found for ID:", id); 
       return res.status(404).json({ error: "Photo not found" });
     }
 
     // return photo
     return res.json(individualPhoto);
   } catch (error) {
-    // 处理错误
     console.error("Error fetching photo details:", error);
     res.status(500).json({ error: "Internal server error" });
   }

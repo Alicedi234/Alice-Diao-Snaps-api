@@ -3,7 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 import photosRoutes from "./Routes/photos.js";
 import photoDetailsRoutes from "./Routes/photoDetails.js";
-import photoTags from "./Routes/photoTags.js";
+import Tags from "./Routes/Tags.js";
 
 //define the port
 const port = process.env.PORT ?? 5050;
@@ -27,7 +27,7 @@ app.use("/photos",photosRoutes);
 
 app.use("/photos",photoDetailsRoutes);
 
-app.use("/tags",photoTags);
+app.use("/tags",Tags);
 
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`);
