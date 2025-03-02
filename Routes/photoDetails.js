@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 import fs from "fs";
 
-router.get("/:id", (req, res) => {
+router.get("/photos/:id", (req, res) => {
   try {
     //read jason file
     const photoDetailFile = fs.readFileSync("./data/photos.json");
@@ -14,7 +14,7 @@ router.get("/:id", (req, res) => {
 
     // if photo not found
     if (!individualPhoto) {
-      console.log("Photo not found for ID:", id); 
+      console.log("Photo not found for ID:", id);
       return res.status(404).json({ error: "Photo not found" });
     }
 

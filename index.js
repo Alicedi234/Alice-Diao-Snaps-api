@@ -5,6 +5,7 @@ import PhotosRoutes from "./Routes/Photos.js";
 import PhotoDetailsRoutes from "./Routes/PhotoDetails.js";
 import TagsRoutes from "./Routes/Tags.js";
 import CommentsRoutes from "./Routes/Comments.js";
+import PostCommentsRoutes from "./Routes/PostComments.js";
 
 //define the port
 const port = process.env.PORT ?? 5050;
@@ -18,19 +19,21 @@ app.use(cors());
 //serve static files
 app.use(express.static("public"));
 
-app.get(express.json());
+app.use(express.json());
 
 app.get("/",(req,res) =>{
   res.send("hello");
 });
 
-app.use("/photos",PhotosRoutes);
+app.use("/",PhotosRoutes);
 
-app.use("/photos",PhotoDetailsRoutes);
+app.use("/",PhotoDetailsRoutes);
 
-app.use("/tags",TagsRoutes);
+app.use("/",TagsRoutes);
 
-app.use("/photos", CommentsRoutes);
+app.use("/", CommentsRoutes);
+
+app.use("/", PostCommentsRoutes);
 
 
 
